@@ -1,0 +1,19 @@
+{
+  "name": "구미 가온클럽 볼링 점수관리",
+  "short_name": "가온클럽",
+  "description": "가온클럽 회원 점수와 순위 관리",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f5fa",
+  "theme_color": "#143d32",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
