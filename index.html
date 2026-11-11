@@ -58,7 +58,7 @@ const SUPABASE_URL='https://idpiomqmgbkocjtaaedh.supabase.co',KEY='sb_publishabl
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let db=null,user=null,me=null,members=[],events=[],scores=[],tab='ranking';
 const phone=v=>String(v||'').replace(/\D/g,'');
-const emailForPhone=p=>phone(p)+'@members.gumi-gaon.example.com';
+const emailForPhone=p=>phone(p)+'@members.gusxkrl.github.io';
 const isAdmin=()=>!!(me&&(me.is_admin||me.is_superadmin));
 const approved=()=>!!(me&&(me.approved||isAdmin()));
 const dateOf=e=>String(e?.event_date||'').slice(0,10);
