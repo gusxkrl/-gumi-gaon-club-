@@ -1,0 +1,28 @@
+name: Build PWA PNG icons
+on:
+  push:
+    paths:
+      - icon.svg
+      - .github/workflows/build-icons.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  icons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate PNG icons
+        run: |
+          python3 -m pip install --quiet cairosvg
+          python3 - <<'PY'
+          import cairosvg
+          for size in (192,512):
+              cairosvg.svg2png(url='icon.svg',write_to=f'icon-{size}.png',output_width=size,output_height=size)
+          PY
+      - name: Commit icons
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add icon-192.png icon-512.png
+          git diff --cached --quiet || (git commit -m "Generate PNG PWA icons" && git push)
