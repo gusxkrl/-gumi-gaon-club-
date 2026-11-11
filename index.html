@@ -12,6 +12,33 @@
 .danger-zone{border-top:1px solid #e9edf5;padding-top:15px}.danger-btn{background:#b42318}.high-score{color:#d62828!important;font-weight:800!important}.podium-games .high-score{font-size:inherit}.score-actions{display:flex;gap:6px;flex-shrink:0}.score-actions button{padding:9px 10px;font-size:13px}.danger-btn{background:#c62828;color:white}.admin-fold>summary{cursor:pointer;font-weight:750;font-size:17px;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:4px 0}.admin-fold>summary::after{content:"＋";font-size:22px;color:#17836a}.admin-fold[open]>summary::after{content:"－"}.admin-fold-body{padding-top:16px}.admin-fold>summary::-webkit-details-marker{display:none}
 /* GAON premium black & gold redesign */
 :root{color:#f4f2ed;background:#0e1422;color-scheme:dark}body{background:#0e1422;color:#f4f2ed}header{background:#111827;border-bottom:1px solid #bda16b55;border-radius:0;padding:30px 18px 24px}header>div{position:relative}header small{color:#d6b66f;letter-spacing:2px;font-weight:650}header h1{font-size:31px;letter-spacing:-1px;color:#fff;margin:12px 0 5px}header h1:after{content:'구미 가온클럽 · 회원 전용';display:block;color:#d6b66f;font-size:12px;letter-spacing:3px;margin-top:6px}#who{color:#aeb3c0;font-size:13px}.wrap{max-width:650px;margin:auto}.card{background:#202633;color:#f5f3ee;border:1px solid #c6a66528;border-radius:22px;box-shadow:none;padding:20px}.card h2{color:#e3c17b}.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;overflow:visible}.tabs button{background:#252c39;color:#e2c080;border:1px solid #c6a66538;border-radius:16px;padding:15px 5px;white-space:normal;min-height:65px;font-size:13px;font-weight:750}.tabs button.active{background:#b99b60;color:#101827;border-color:#e3c17b}.tabs button:nth-child(n+4){min-height:43px}button{background:#b99b60;color:#101827;font-weight:750}button.alt{background:#353b48;color:#e7d0a0}input,select,textarea{background:#131b29!important;color:#f5f2e9!important;border:1px solid #596071!important}input::placeholder{color:#9a9fac}.muted,.rank-list-heading{color:#aeb3c0}.notice{background:#2e2b22;color:#f0dba6}.stat,.profile-section,.podium-games span{background:#2c3443;color:#f3eee5}.stat strong{color:#e3c17b}.row,.rank{border-bottom-color:#ffffff20}.member-name{color:#e3c17b}.podium-card{background:#252c39;border-color:#c6a66540;box-shadow:none}.podium-1{border-left:5px solid #d6b66f}.podium-2{border-left:5px solid #aeb7c7}.podium-3{border-left:5px solid #b98565}.podium-number,.podium-name,.podium-stats strong{color:#f4f2ed}.podium-1 .podium-number{color:#e5c376}.podium-2 .podium-number{color:#c4cad3}.podium-3 .podium-number{color:#cb9876}.podium-stats small,.podium-games small{color:#b4b9c5}.profile-panel{background:#202633;color:#f5f2e9}.profile-section{background:#2b3442}.profile-metrics div{background:#182232}.admin-fold>summary::after{color:#e3c17b}details summary{color:#e5c786}#authBox{border-color:#c6a66555}#authBox h2{color:#e7c77d}@media(max-width:420px){header h1{font-size:27px}.wrap{padding:12px 11px 70px}.card{padding:16px}.tabs button{font-size:12px;padding:12px 4px}}
+
+/* First Club layout with GAON black-and-gold palette */
+body{background:#101724;color:#f4f2ed}
+header{background:#121d30;border-radius:0 0 28px 28px;padding:27px 18px 29px}
+header h1{font-size:30px;margin:9px 0 8px}
+header h1:after{content:none}
+header small{font-size:12px;letter-spacing:1.3px}
+#who{font-size:15px;color:#d5d9e1}
+.wrap{max-width:650px;padding:16px 14px 80px}
+#notice{margin:0 0 16px;border-radius:15px;padding:15px 16px;background:#2a2a26;color:#eed69a}
+.tabs{display:flex;grid-template-columns:none;gap:6px;overflow-x:auto;margin:14px 0 18px;padding:0 0 2px;scrollbar-width:thin}
+.tabs button,.tabs button:nth-child(n+4){display:block;flex:1 0 0;min-width:0;min-height:47px;padding:12px 3px;border-radius:12px;white-space:nowrap;font-size:clamp(10px,2.8vw,14px);line-height:1.2;background:#252d3c;color:#f1d28d;border:1px solid #c6a66538}
+.tabs button.active{background:#c5a66c;color:#111827;border-color:#e7ca8e}
+#ranking>.card{padding:22px 17px}
+#ranking h2{font-size:21px;margin-bottom:20px;color:#f6e7c5}
+#ranking select{min-height:48px;margin:6px 0 13px;border-radius:13px}
+.podium-list{display:grid;gap:12px;margin-top:20px}
+.podium-card{border-radius:19px;padding:17px 13px;min-height:120px;background:#232c3a}
+.podium-1{border-left:6px solid #dfb747}.podium-2{border-left:6px solid #aeb8c5}.podium-3{border-left:6px solid #b9896a}
+.podium-position{min-width:57px}.podium-number{font-size:29px}
+.podium-name{font-size:16px;color:#fff}
+.podium-stats strong{font-size:21px}
+.podium-games{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:13px}
+.podium-games span{background:#323c4d;border-radius:12px;padding:10px 2px;color:#fff}
+.podium-games .high-score{color:#f0a5a5!important}
+.rank-list-heading{margin-top:22px}
+@media(max-width:420px){.wrap{padding:13px 10px 70px}#ranking>.card{padding:18px 13px}.tabs{gap:5px}.tabs button,.tabs button:nth-child(n+4){padding:12px 2px;font-size:11px}.podium-card{padding:15px 9px;gap:7px}.podium-stats{gap:8px}.podium-stats strong{font-size:18px}}
 </style></head><body><header><div><small>GUMI BOWLING CLUB</small><h1>GAON CLUB</h1><div id="who">연결 중...</div></div></header><main class="wrap"><div id="notice" class="notice">준비 중...</div><div id="error" class="error" role="alert"></div>
 <div class="card" id="authBox"><h2>회원 로그인</h2><label>휴대전화 번호</label><input id="loginId" inputmode="tel" autocomplete="username" placeholder="01012345678"><label>비밀번호</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="비밀번호"><button id="loginBtn" style="width:100%">로그인</button><details><summary>처음이세요? 회원 가입 신청</summary><p class="muted">이메일 인증 없이 신청하고, 관리자 승인 후 점수를 입력할 수 있습니다.</p><label>이름</label><input id="joinName" autocomplete="name" placeholder="실명"><label>휴대전화 번호</label><input id="joinPhone" type="tel" placeholder="01012345678"><label>비밀번호 (8자 이상)</label><input id="joinPassword" type="password" autocomplete="new-password"><button id="joinBtn" style="width:100%">가입 신청</button></details></div>
 <nav class="tabs"><button data-tab="ranking" class="active">전체 순위</button><button data-tab="entry">점수 입력</button><button data-tab="history">개인 기록</button><button data-tab="profile">프로필</button><button data-tab="manage">관리</button></nav>
