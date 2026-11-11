@@ -164,8 +164,8 @@ async function deleteClubMember(id,self=false){
  }catch(e){alert('강퇴 요청 실패: '+e.message)}
 }
 async function changeMyPassword(){const pw=$('myNewPassword').value;if(pw.length<8)return alert('새 비밀번호는 8자 이상으로 설정하세요.');const r=await db.auth.updateUser({password:pw});if(r.error)return alert('변경 실패: '+r.error.message);$('myNewPassword').value='';alert('비밀번호가 변경됐습니다.')}
-async async function deleteOwnScore(eventId){if(!approved()||!me)return alert('승인된 회원만 사용할 수 있습니다.');const record=scores.find(r=>String(r.member_id)===String(me.id)&&String(r.event_id)===String(eventId));if(!record)return alert('내 점수 기록을 찾을 수 없습니다.');if(!confirm(scoreDate(record)+' · '+gameValues(record).join(' / ')+'\\n이 경기의 내 점수를 영구 삭제할까요?'))return;const result=await db.from('club_scores').delete().eq('member_id',me.id).eq('event_id',eventId).select('member_id,event_id');if(result.error)return alert('삭제 실패: '+result.error.message);if(!result.data?.length)return alert('삭제 권한이 없습니다. 관리자에게 문의해 주세요.');await refresh();alert('내 점수가 삭제되었습니다.')}
-function deleteScoreRecord(memberId,eventId){
+async function deleteOwnScore(eventId){if(!approved()||!me)return alert('승인된 회원만 사용할 수 있습니다.');const record=scores.find(r=>String(r.member_id)===String(me.id)&&String(r.event_id)===String(eventId));if(!record)return alert('내 점수 기록을 찾을 수 없습니다.');if(!confirm(scoreDate(record)+' · '+gameValues(record).join(' / ')+'\\n이 경기의 내 점수를 영구 삭제할까요?'))return;const result=await db.from('club_scores').delete().eq('member_id',me.id).eq('event_id',eventId).select('member_id,event_id');if(result.error)return alert('삭제 실패: '+result.error.message);if(!result.data?.length)return alert('삭제 권한이 없습니다. 관리자에게 문의해 주세요.');await refresh();alert('내 점수가 삭제되었습니다.')}
+async function deleteScoreRecord(memberId,eventId){
  if(!isAdmin())return alert('관리자만 점수를 삭제할 수 있습니다.');
  const record=scores.find(r=>String(r.member_id)===memberId&&String(r.event_id)===eventId);
  if(!record)return alert('점수 기록을 찾을 수 없습니다.');
