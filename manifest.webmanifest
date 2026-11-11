@@ -3,7 +3,7 @@
   "short_name": "가온클럽",
   "description": "가온클럽 회원 점수와 순위 관리",
   "lang": "ko",
-  "start_url": "./",
+  "start_url": "./?gaon-app=20261111-v2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#050505",
@@ -19,7 +19,7 @@
       "src": "./icon-512.png?v=gaon-gold",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./icon.svg?v=gaon-gold",
@@ -27,5 +27,6 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
-  ]
+  ],
+  "id": "./?gaon-app=20261111-v2"
 }
