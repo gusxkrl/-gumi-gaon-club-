@@ -99,11 +99,11 @@ function rankingRangeLabel(anchor){if(!anchor)return '등록된 날짜 없음';c
 let calendarMonth='',calendarOpen=false;
 function drawRankingCalendar(){
  const root=$('rankingCalendar');if(!root)return;
- const active=$('period').value;const allDates=[...new Set(scores.map(scoreDate).filter(Boolean))].sort();
+ const active=$('period').value;const allDates=[...new Set(rankingRecords().map(scoreDate).filter(Boolean))].sort();
  if(!calendarMonth)calendarMonth=(active||allDates[allDates.length-1]||new Date().toISOString().slice(0,10)).slice(0,7);
  const [year,month]=calendarMonth.split('-').map(Number),start=new Date(year,month-1,1).getDay(),days=new Date(year,month,0).getDate();
  const eventTypes=new Map();
- scores.forEach(r=>{const d=scoreDate(r),t=eventById(r.event_id)?.event_type;if(!d||!t)return;if(!eventTypes.has(d))eventTypes.set(d,new Set());eventTypes.get(d).add(t)});
+ rankingRecords().forEach(r=>{const d=scoreDate(r),t=eventById(r.event_id)?.event_type;if(!d||!t)return;if(!eventTypes.has(d))eventTypes.set(d,new Set());eventTypes.get(d).add(t)});
  const dayHtml=Array.from({length:start},()=>'<span></span>').join('')+Array.from({length:days},(_,i)=>{const d=calendarMonth+'-'+String(i+1).padStart(2,'0'),types=eventTypes.get(d),available=!!types&&([...types].some(t=>eventTypeAllowed(t))),dots=types?'<span class="dots">'+(types.has('regular')?'<i class="dot regular-dot"></i>':'')+(types.has('irregular')?'<i class="dot irregular-dot"></i>':'')+(types.has('fixed_lightning')?'<i class="dot fixed-dot"></i>':'')+(types.has('lightning')?'<i class="dot lightning-dot"></i>':'')+'</span>':'';return '<button type="button" class="calendar-day '+(available?'has-score ':'')+(rangeStart&&rangeEnd&&d>=rangeStart&&d<=rangeEnd?'selected':'')+'" data-calendar-date="'+d+'" '+''+'>'+String(i+1)+dots+'</button>'}).join('');
  root.innerHTML='<div class="calendar-head"><button type="button" data-calendar-nav="-1" aria-label="이전 달">‹</button><span>'+year+'년 '+month+'월</span><button type="button" data-calendar-nav="1" aria-label="다음 달">›</button></div><div class="calendar-grid">'+['일','월','화','수','목','금','토'].map(d=>'<span class="calendar-weekday">'+d+'</span>').join('')+dayHtml+'</div><div class="calendar-legend"><span><i class="regular-dot"></i>정기전</span><span><i class="irregular-dot"></i>비정기</span><span><i class="fixed-dot"></i>고정벙</span><span><i class="lightning-dot"></i>벙개</span></div><div class="calendar-range-actions"><span>'+rangeStart+(rangeStart!==rangeEnd?' ~ '+rangeEnd:'')+'</span><button type="button" data-calendar-confirm="1" '+(awaitingRangeEnd?'disabled':'')+'>확인</button></div>';
  root.hidden=!calendarOpen;$('calendarToggle').setAttribute('aria-expanded',String(calendarOpen));$('calendarToggle').textContent='📅 '+rankingRangeLabel(active);
