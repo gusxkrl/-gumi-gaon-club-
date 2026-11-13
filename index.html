@@ -141,10 +141,10 @@ loadSelectedScore()}
 function showMemberProfile(id,fromHistory=false){
  if(!fromHistory)history.pushState({clubTab:tab,clubProfile:id},'',location.pathname+location.search+'#member-'+encodeURIComponent(id));
  const m=members.find(x=>x.id===id&&x.approved);if(!m)return;
- const category=(type)=>{const rows=scores.filter(x=>x.member_id===id&&eventById(x.event_id)?.event_type===type);const total=rows.reduce((a,r)=>a+gameValues(r).reduce((n,v)=>n+v,0),0);const games=rows.reduce((n,r)=>n+gameValues(r).length,0);return{attend:new Set(rows.map(r=>r.event_id)).size,games,total,avg:games?(total/games).toFixed(1):'—'}};
+ const category=(type)=>{const rows=rankingRecords().filter(x=>x.member_id===id&&eventById(x.event_id)?.event_type===type);const total=rows.reduce((a,r)=>a+gameValues(r).reduce((n,v)=>n+v,0),0);const games=rows.reduce((n,r)=>n+gameValues(r).length,0);return{attend:new Set(rows.map(r=>r.event_id)).size,games,total,avg:games?(total/games).toFixed(1):'—'}};
  const panel=(title,x)=>'<div class="profile-section"><h3>'+title+'</h3><div class="profile-metrics">'+[['참석 횟수',x.attend+'회'],['게임 수',x.games+'게임'],['총점',x.total.toLocaleString()+'점'],['평균 에버리지',x.avg]].map(a=>'<div><small>'+a[0]+'</small><strong>'+a[1]+'</strong></div>').join('')+'</div></div>';
  $('memberProfileTitle').textContent=m.name+' 프로필';
- $('memberProfileDetails').innerHTML='<p><strong>전화번호:</strong> '+(m.phone?esc(m.phone):'비공개')+'</p>'+panel('벙개',category('lightning'))+panel('정기전',category('regular'));
+ $('memberProfileDetails').innerHTML='<p><strong>전화번호:</strong> '+((isAdmin()||m.phone_public||me?.id===m.id)&&m.phone?esc(m.phone):'비공개')+'</p>'+panel('정기전',category('regular'))+panel('비정기전',category('irregular'))+panel('고정벙개',category('fixed_lightning'));
  $('memberProfileOverlay').hidden=false;
 }
 function closeMemberProfile(){if(!$('memberProfileOverlay').hidden&&history.state?.clubProfile){history.back()}else{$('memberProfileOverlay').hidden=true}}
